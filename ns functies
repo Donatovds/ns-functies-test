@@ -31,11 +31,11 @@ def standaardprijs(afstandKM):
             float: De berekende standaardprijs.
         """
     if afstandKM < 0:
-        afstandKM = 0
+        afstandKM = 0 #hier zet ik een minimale waarde neer zodat er niet met '0' gerekend kan worden
 
-    if afstandKM >= 50:
+    if afstandKM > 50: #dit zijn de voorwaarden die worden berekend wanneer een reis langer dan 50km is
         prijs = 15 + afstandKM * 0.6
-    else:
+    else: #dit zijn de voorwaarden wanneer de reis onder de 50km is
         prijs = afstandKM * 0.8
     return prijs
 
@@ -61,9 +61,9 @@ def ritprijs(leeftijd, weekendrit, afstandKM):
        Returns:
            float: De berekende ritprijs.
        """
-    eindprijs = standaardprijs(afstandKM)
-    if leeftijd < 12 or leeftijd >= 65:
-       if weekendrit:
+    eindprijs = standaardprijs(afstandKM) #hier zorg ik dat functie 'standaardprijs' word gebruikt voor de volgende berekeningen
+    if leeftijd < 12 or leeftijd >= 65: #dit zijn de eerste voorwaarden waar deze functie naar kijkt.
+       if weekendrit: #dit zijn de tweede voorwaarden waar de functie naar kijkt
             korting = 0.35
        else:
             korting = 0.30
@@ -72,7 +72,7 @@ def ritprijs(leeftijd, weekendrit, afstandKM):
              korting = 0.40
        else:
              korting =0.00
-    return eindprijs * (1 - korting)
+    return eindprijs * (1 - korting) #hier word door een formule de een functie met voorwaarden vermenigvuldigd en zo word de eindprijs bepaald
 
 
 def development_code():
