@@ -61,7 +61,7 @@ def ritprijs(leeftijd, weekendrit, afstandKM):
        Returns:
            float: De berekende ritprijs.
        """
-    basisprijs = standaardprijs(afstandKM)
+    eindprijs = standaardprijs(afstandKM)
     if leeftijd < 12 or leeftijd >= 65:
        if weekendrit:
             korting = 0.35
@@ -72,7 +72,7 @@ def ritprijs(leeftijd, weekendrit, afstandKM):
              korting = 0.40
        else:
              korting =0.00
-    return basisprijs * (1 - korting)
+    return eindprijs * (1 - korting)
 
 
 def development_code():
